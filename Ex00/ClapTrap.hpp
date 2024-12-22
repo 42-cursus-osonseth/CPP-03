@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include <climits>
+#include "Colors.hpp"
 
 class ClapTrap
 {
@@ -12,25 +12,34 @@ private:
     unsigned int Health;
     unsigned int Energy;
     unsigned int Attack_damage;
-
-public:
-
     static const unsigned int MAX_HEALTH = 100;
 
+public:
+    // Constructors / Destructor
     ClapTrap();
-    ~ClapTrap();
     ClapTrap(std::string n, int h, int e, int a);
     ClapTrap(const ClapTrap &other);
-    ClapTrap& operator=(const ClapTrap &other);
-    const std::string  &getName () const;
+    ~ClapTrap();
+
+    // Operator Overloading
+    ClapTrap &operator=(const ClapTrap &other);
+
+    // Getters / Setters
+    const std::string &getName() const;
     unsigned int getEnergy() const;
     unsigned int getHealth() const;
     unsigned int getAttackDamage() const;
     void setHealth(unsigned int damage);
     void setEnergy();
+
+    // Member functions
     void attack(const std::string &target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
+    void printAttack(const std::string &target);
+    void printDamage(unsigned int amount);
+    void printRepaired(unsigned int amount);
+    void printConstructorInfos(std::string n, int h, int e, int a);
 };
 
 #endif
