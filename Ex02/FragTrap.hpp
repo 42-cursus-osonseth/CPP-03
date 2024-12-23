@@ -9,12 +9,17 @@
 class FragTrap : public ClapTrap
 {
 private:
-    
 public:
+    // Constructors / Destructor
     FragTrap();
     ~FragTrap();
-    FragTrap(std::string n, unsigned int h, unsigned int e, unsigned int a);
-    void highFivesGuy();
+    FragTrap(std::string n);
+    FragTrap(const FragTrap &other);
+    // Operator Overloading
+    FragTrap &operator=(const FragTrap &other);
+    // Member functions
+    void highFivesGuys(void);
+    void attack(const std::string &target);
 };
 
 

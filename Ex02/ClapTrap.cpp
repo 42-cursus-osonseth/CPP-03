@@ -4,29 +4,34 @@
 ClapTrap::ClapTrap()
 {
     std::cout 
-    << MAGENTA << "CLAPTRAP default constructor is called" << RESET
+    << MAGENTA << "CLAPTRAP Default constructor is called" << RESET
     << std::endl;
 }
 ClapTrap::~ClapTrap()
 {
     std::cout
-    << MAGENTA << "CLAPTRAP destructor is called" << RESET
+    << MAGENTA << "CLAPTRAP Destructor is called" << RESET
     << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string n, int h, int e, int a) : name(n), Health(0), Energy(0), Attack_damage(0)
+ClapTrap::ClapTrap(std::string n) : Name(n), Health(10), Energy(10), Attack_damage(0)
 {
-    (h < 0) ? Health = 0 : Health = h;
-    (e < 0) ? Energy = 0 : Energy = e;
-    (a < 0) ? Attack_damage = 0 : Attack_damage = a;
-    printConstructorInfos(n, h, e, a);
+    std::cout
+    << MAGENTA << "CLAPTRAP Constructor is called" << RESET << std::endl;
 }
+ClapTrap::ClapTrap(std::string n, unsigned int h, unsigned int e, unsigned int a) 
+: Name(n), Health(h), Energy(e), Attack_damage(a)
+{
+    std::cout
+    << MAGENTA << "CLAPTRAP Constructor is called" << RESET << std::endl;
+}
+
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
     std::cout
-    << "CLAPTRAP copy constructor is called"
+    << MAGENTA << "CLAPTRAP Copy constructor is called" << RESET
     << std::endl;
-    this->name = other.name;
+    this->Name = other.Name;
     this->Health = other.Health;
     this->Energy = other.Energy;
     this->Attack_damage = other.Attack_damage;
@@ -37,8 +42,9 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
     if (this != &other)
     {
-        std::cout << "CLAPTRAP assignment operator is called" << std::endl;
-        this->name = other.name;
+        std::cout 
+        << MAGENTA << "CLAPTRAP Assignment operator is called" << RESET << std::endl; 
+        this->Name = other.Name;
         this->Health = other.Health;
         this->Energy = other.Energy;
         this->Attack_damage = other.Attack_damage;
@@ -47,7 +53,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 }
 
 // Getters / Setters
-const std::string &ClapTrap::getName() const {return name;}
+const std::string &ClapTrap::getName() const {return Name;}
 unsigned int ClapTrap::getEnergy() const {return Energy;}
 unsigned int ClapTrap::getHealth() const {return Health;}
 unsigned int ClapTrap::getAttackDamage() const {return Attack_damage;}
@@ -57,11 +63,10 @@ void ClapTrap::setEnergy() { if (Energy > 0)Energy--;}
 // Member functions
 void ClapTrap::attack(const std::string &target)
 {
-    if (Energy > 0)
-    {
-        printAttack(target);
-        setEnergy();
-    }
+    if (Energy == 0)
+        return;
+    printAttack(target);
+    setEnergy();
 }
 void ClapTrap::takeDamage(unsigned int amount)
 {
@@ -70,7 +75,8 @@ void ClapTrap::takeDamage(unsigned int amount)
 }
 void ClapTrap::beRepaired(unsigned int amount)
 {
-
+    if (Energy == 0)
+        return;
     if (amount > MAX_HEALTH - Health)
     {
         setHealth(MAX_HEALTH);
@@ -87,7 +93,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 void ClapTrap::printAttack(const std::string &target)
 {
     std::cout 
-    << BLUE_BOLD << name << RESET 
+    << BLUE_BOLD << Name << RESET 
     << YELLOW_ITALIC << " Attack " << RESET 
     << CYAN_BOLD << target << RESET
     << YELLOW_ITALIC << " causing " << RESET 
@@ -98,7 +104,7 @@ void ClapTrap::printAttack(const std::string &target)
 void ClapTrap::printDamage(unsigned int amount)
 {
     std::cout 
-    << BLUE_BOLD << name << RESET 
+    << BLUE_BOLD << Name << RESET 
     << YELLOW_ITALIC << " taked " << RESET 
     << RED_BOLD << amount << RESET 
     << YELLOW_ITALIC << " points of damage!" << RESET 
@@ -107,7 +113,7 @@ void ClapTrap::printDamage(unsigned int amount)
 void ClapTrap::printRepaired(unsigned int amount)
 {
     std::cout 
-    << BLUE_BOLD << name << RESET 
+    << BLUE_BOLD << Name << RESET 
     << YELLOW_ITALIC << " Recover " << RESET
     << RED_BOLD << amount << RESET
     << YELLOW_ITALIC << " life point! " << RESET
@@ -116,18 +122,17 @@ void ClapTrap::printRepaired(unsigned int amount)
     << YELLOW << ")" << RESET
     << std::endl;
 }
-void ClapTrap::printConstructorInfos(std::string n, int h, int e, int a)
+void ClapTrap::printInfos()
 {
     std::cout
-    << MAGENTA << "CLAPTRAP constructor is called" << RESET << std::endl
     << YELLOW << "(Player info) :"
     << std::endl
     << YELLOW << "Name   : " << RESET
-    << n << std::endl
+    << Name << std::endl
     << YELLOW << "Health : " << RESET
-    << h << std::endl
+    << Health << std::endl
     << YELLOW << "Energy : " << RESET
-    << e << std::endl
+    << Energy << std::endl
     << YELLOW << "Attack : " << RESET
-    << a << std::endl << std::endl;
+    << Attack_damage << std::endl << std::endl;
 }

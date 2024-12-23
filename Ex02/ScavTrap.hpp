@@ -9,14 +9,17 @@
 class ScavTrap : public ClapTrap
 {
 private:
-    
 public:
+    // Constructors / Destructor
     ScavTrap();
     ~ScavTrap();
-    ScavTrap(std::string n, unsigned int h, unsigned int e, unsigned int a);
-    void guardGate();
+    ScavTrap(std::string n);
+    ScavTrap(const ScavTrap &other);
+    // Operator Overloading
+    ScavTrap &operator=(const ScavTrap &other);
+    // Member functions
+    void guardGate() const;
+    void attack(const std::string &target);
 };
-
-
 
 #endif
