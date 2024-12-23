@@ -36,10 +36,10 @@ public:
     void attack(const std::string &target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
-    void printAttack(const std::string &target);
-    void printDamage(unsigned int amount);
-    void printRepaired(unsigned int amount);
-    void printInfos();
+    void printAttack(const std::string &target) const;
+    void printDamage(unsigned int amount) const;
+    void printRepaired(unsigned int amount) const;
+    void printInfos() const;
 };
 
 #endif

@@ -84,7 +84,7 @@ void ClapTrap::beRepaired(unsigned int amount)
     printRepaired(amount);
 }
 // Member PRINT functions
-void ClapTrap::printAttack(const std::string &target)
+void ClapTrap::printAttack(const std::string &target) const
 {
     std::cout 
     << BLUE_BOLD << Name << RESET 
@@ -95,7 +95,7 @@ void ClapTrap::printAttack(const std::string &target)
     << YELLOW_ITALIC << " points of damage!" << RESET 
     << std::endl;
 }
-void ClapTrap::printDamage(unsigned int amount)
+void ClapTrap::printDamage(unsigned int amount) const
 {
     std::cout 
     << BLUE_BOLD << Name << RESET 
@@ -104,7 +104,7 @@ void ClapTrap::printDamage(unsigned int amount)
     << YELLOW_ITALIC << " points of damage!" << RESET 
     << std::endl;
 }
-void ClapTrap::printRepaired(unsigned int amount)
+void ClapTrap::printRepaired(unsigned int amount) const
 {
     std::cout 
     << BLUE_BOLD << Name << RESET 
@@ -116,7 +116,7 @@ void ClapTrap::printRepaired(unsigned int amount)
     << YELLOW << ")" << RESET
     << std::endl;
 }
-void ClapTrap::printInfos()
+void ClapTrap::printInfos() const
 {
     std::cout
     << YELLOW << "(Player info) :"
