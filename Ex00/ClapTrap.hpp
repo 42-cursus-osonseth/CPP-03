@@ -8,7 +8,7 @@
 class ClapTrap
 {
 private:
-    std::string name;
+    std::string Name;
     unsigned int Health;
     unsigned int Energy;
     unsigned int Attack_damage;
@@ -17,7 +17,7 @@ private:
 public:
     // Constructors / Destructor
     ClapTrap();
-    ClapTrap(std::string n, int h, int e, int a);
+    ClapTrap(std::string n);
     ClapTrap(const ClapTrap &other);
     ~ClapTrap();
 
@@ -39,7 +39,7 @@ public:
     void printAttack(const std::string &target);
     void printDamage(unsigned int amount);
     void printRepaired(unsigned int amount);
-    void printConstructorInfos(std::string n, int h, int e, int a);
+    void printInfos();
 };
 
 #endif

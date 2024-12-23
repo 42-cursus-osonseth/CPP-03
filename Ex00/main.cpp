@@ -2,22 +2,21 @@
 
 int main()
 {
-    ClapTrap a ("Bob", 10, 20, 0);
-    ClapTrap b ("Max" , 10, 10, 0);
+   ClapTrap a ("bob");
+   ClapTrap b = a;
+   ClapTrap c("Max");
+   a = c;
 
-    std::cout << "--------------------------------------------------" << std::endl;
+   b.printInfos();
 
     while (a.getEnergy() > 0 || b.getEnergy() > 0)
     {
-     
-        a.beRepaired(2);
-        b.beRepaired(3);
-        std::cout << std::endl;
         a.attack(b.getName());
         b.takeDamage(a.getAttackDamage());
         b.attack(a.getName());
         a.takeDamage(b.getAttackDamage());
-        std::cout << std::endl;
+        a.beRepaired(5);
+        b.beRepaired(0);
     }
 
     return 0;
