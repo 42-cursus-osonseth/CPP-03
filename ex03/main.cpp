@@ -22,6 +22,10 @@ int main()
         a.takeDamage(b.getAttackDamage());
         a.whoAmI();
         b.whoAmI();
+        a.highFivesGuys();
+        b.highFivesGuys();
+        a.guardGate();
+        b.guardGate();
        
     }
 
