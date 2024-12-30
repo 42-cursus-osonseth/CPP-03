@@ -25,8 +25,8 @@ int main()
         a.highFivesGuys();
         b.highFivesGuys();
     }
-    d.attack("qdgdgdd");
-    e.attack("dfsqgsdgg");
+    d.attack("dédé");
+    e.attack("dédé");
 
     return 0;
 }
